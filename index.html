@@ -1,173 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valentine's Day</title>
+    <title>Valentine's Day </title>
     <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #ffe6e6;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        overflow: hidden;
-      }
-      header {
-        background-color: #ff4d6d;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        font-size: 2em;
-        width: 100%;
-      }
-      main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        text-align: center;
-      }
-      .heart {
-        font-size: 100px;
-        color: #ff4d6d;
-        animation: pulse 1s infinite;
-      }
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
         }
-        50% {
-          transform: scale(1.2);
+
+        header {
+            background-color: #ff4d6d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            width: 100%;
         }
-        100% {
-          transform: scale(1);
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
         }
-      }
-      p {
-        font-size: 1.5em;
-        color: #ff4d6d;
-        margin-top: 20px;
-      }
-      button {
-        background-color: #ff4d6d;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        margin-top: 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1em;
-      }
-      .popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        z-index: 1000;
-        width: 500px;
-        height: 300px;
-        overflow: hidden;
-      }
-      .popup button {
-        margin: 10px;
-        padding: 10px 20px;
-        font-size: 1em;
-        cursor: pointer;
-        position: relative;
-      }
-      .msg-pop {
-        height: fit-content;
-      }
-      #no {
-        position: absolute;
-      }
-      .heart-rain {
-        position: fixed;
-        animation: fall 5s linear infinite;
-        font-size: 24px;
-        color: #ff4d6d;
-      }
-      @keyframes fall {
-        0% {
-          transform: translateY(-100%);
+
+        .heart {
+            font-size: 100px;
+            color: #ff4d6d;
+            animation: pulse 1s infinite;
         }
-        100% {
-          transform: translateY(100vh);
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
-      }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+            width: 400px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff1a4d;
+        }
+
+        .falling-item {
+            position: fixed;
+            top: -50px;
+            animation: fall 5s linear infinite;
+            font-size: 24px;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
     </style>
-  </head>
-  <body>
-    <header>Happy Valentine's Day ❤️</header>
+</head>
+
+<body>
+    <header>Happy Valentine's Day My love ❤️</header>
     <main>
-      <div class="heart">&#10084;</div>
-      <p>You're the heartbeat of my life, Babyyyyy!</p>
-      <button onclick="showPopup()">Click for a Surprise</button>
+        <div class="heart">&#10084;</div>
+        <p>You're the heartbeat of my life, Baby!</p>
+        <button onclick="showPopup()">Click for a Surprise</button>
     </main>
 
-    <div class="popup msg-pop" id="valentinePopup">
-      <h2>Will you be my Valentine?</h2>
-      <button onclick="showLoveMessage()">Yes</button>
-      <button id="no">No</button>
+    <div class="popup" id="valentinePopup">
+        <h2>Will you be my Valentine?</h2>
+        <button onclick="showLoveMessage()">Yes</button>
+        <button id="no">No</button>
     </div>
 
     <div class="popup" id="loveMessagePopup" style="display: none">
-      <h2>Forever yours, Babyyyyy ❤️</h2>
-      <p>
-        You make my life complete, and every moment with you is a blessing. I
-        promise to cherish you always. Happy Valentine's Day, my love!
-      </p>
-      <button onclick="closePopup()">Close</button>
+        <h2>Forever yours, Baby ❤️</h2>
+        <p>
+            I knew you are going to accept my proposal. Lots of love and lots of
+            hugs kisses and many more.
+        </p>
+        <p>
+            Let's have a tour of our journey: Back to 2019 December 15 where you and I used to
+            be kids: Two Virat Kohli fans meetup or two online bestfriends meetup? I
+            would rather consider this as my first ever date. The first girl whom I
+            met outside the chat. I was bit of nervous because I was meeting any
+            girl with person for the first time in my life and by watching your
+            photos and videos you looked taller than me. I couldn't have spoken a
+            single word if you were taller than me literally.
+
+        <p>
+            Luckily I was an inch taller than you. After that I was full of confidence and I talked you full day. That
+            was the day when I felt myself as a happiest man. After the day ended I was bechain for our next meetup,
+            which was unplanned. We then planned to meet on December 25, that 10 days felt like 10 months for me. On
+            December 24th (one day before the plan) I just went to her place cause I couldn't wait to meet her.
+        </p>
+        <p>
+            This was how our love started sparkling, my heart stared beating for someone for the first time, every
+            notification in my phone
+            just felt like yours and my heart started beating faster and faster even though the message was not your.
+            Since then till now love for you is just increasing
+            and increasing. There may be some misunderstandings, miscommunications, between us, but the love for you
+            never faded away.
+        </p>
+        <p>
+            On this Valentine's day I just want to say that, I LOVE YOU VERY MUCH my pumpkin, my lollipop, my
+            kuchumuchu, my dairy milk
+            I can't imagine my life without you baby. Okay Let's play a game, Close your eyes for 3 seconds, 1 ... 2....
+            3...
+            What did you see?? Darkness right?? Thats my life without you babyyy.
+            Hahaha little old right? I know my love for you is also old and it is ageing like a fine wine.
+            Chalo aile lai yeti nai aba dherai kura paxi garamla veterai
+        </p>
+        </p>
+        <button onclick="closePopup()">Close</button>
     </div>
 
     <script>
-      function showPopup() {
-        document.getElementById("valentinePopup").style.display = "block";
-      }
+        function showPopup() {
+            document.getElementById("valentinePopup").style.display = "block";
+            startFallingItems();
+        }
+        function showLoveMessage() {
+            document.getElementById("valentinePopup").style.display = "none";
+            document.getElementById("loveMessagePopup").style.display = "block";
+        }
+        function closePopup() {
+            document.getElementById("loveMessagePopup").style.display = "none";
+        }
+        document.getElementById("no").addEventListener("mouseover", () => {
+            const popup = document.getElementById("valentinePopup");
+            const popupRect = popup.getBoundingClientRect();
+            const maxX = popup.clientWidth - 60;
+            const maxY = popup.clientHeight - 30;
+            document.getElementById("no").style.position = "absolute";
+            document.getElementById("no").style.left = `${Math.random() * maxX}px`;
+            document.getElementById("no").style.top = `${Math.random() * maxY}px`;
+        });
 
-      function showLoveMessage() {
-        document.getElementById("valentinePopup").style.display = "none";
-        document.getElementById("loveMessagePopup").style.display = "block";
-        startHeartRain();
-      }
-
-      function closePopup() {
-        document.getElementById("loveMessagePopup").style.display = "none";
-      }
-
-      const noButton = document.getElementById("no");
-      const popup = document.getElementById("valentinePopup");
-
-      noButton.addEventListener("mouseover", () => {
-        const maxX = popup.clientWidth - noButton.offsetWidth;
-        const maxY = popup.clientHeight - noButton.offsetHeight;
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
-        noButton.style.left = `${x}px`;
-        noButton.style.top = `${y}px`;
-      });
-
-      function startHeartRain() {
-        setInterval(() => {
-          const heart = document.createElement("div");
-          heart.classList.add("heart-rain");
-          heart.innerHTML = "❤️";
-          heart.style.left = `${Math.random() * 100}vw`;
-          heart.style.animationDuration = `${2 + Math.random() * 3}s`;
-          document.body.appendChild(heart);
-          setTimeout(() => heart.remove(), 5000);
-        }, 200);
-      }
+        function startFallingItems() {
+            const items = ["🌹", "💋", "🤗", "🧸", "🍫"];
+            setInterval(() => {
+                const item = document.createElement("div");
+                item.classList.add("falling-item");
+                item.innerHTML = items[Math.floor(Math.random() * items.length)];
+                item.style.left = `${Math.random() * 100}vw`;
+                item.style.animationDuration = `${2 + Math.random() * 3}s`;
+                document.body.appendChild(item);
+                setTimeout(() => item.remove(), 5000);
+            }, 200);
+        }
     </script>
-  </body>
+</body>
+
 </html>
